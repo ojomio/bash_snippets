@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e -u
+which dot || sudo apt-get install -y graphviz
+if [[ `git status docker-compose.yml -s | cut -c 2` != M ]]; then
+    exit 0;
+fi
+docker run --rm -v $( readlink -f $GIT_DIR/..):/tmp digibib/docker-compose-dot:21af6b4fd714903cebd3d4658ad35da4d0db0051 ./app /tmp/docker-compose.yml 1> docker-compose.dot
+dot -Tpng docker-compose.dot -o schema.png || { cat docker-compose.dot && echo && exit 1; }
+rm docker-compose.dot
+git add schema.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
