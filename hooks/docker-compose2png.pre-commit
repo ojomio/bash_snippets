@@ -9,28 +9,3 @@ docker run --rm -v $( readlink -f $GIT_DIR/..):/tmp digibib/docker-compose-dot:2
 dot -Tpng docker-compose.dot -o schema.png || { cat docker-compose.dot && echo && exit 1; }
 rm docker-compose.dot
 git add schema.png
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
